@@ -6,18 +6,18 @@ import java.util.ArrayList;
 public interface GoalDAO extends Serializable{
 
     /**
-     * Persists Note information to a persistent data store
+     * Persists Goal information to a persistent data store
      */
     public void addGoal(Goal goal);
 
     /**
-     * Gets all of the <code>Note</code> instances in the data store
+     * Gets all of the Goal instances in the data store
      */
-    public ArrayList<Goal> getAllGoals();
+    public ArrayList<Goal> getAllGoals(String userId);
 
     /**
-     * Removed an Note instance in data store that
-     * matches note
+     * Removed a Goal instance in data store that
+     * matches Goal
      */
-    public void removeGoal(Goal goal);
+    public void removeGoal(Long goalId);
 }

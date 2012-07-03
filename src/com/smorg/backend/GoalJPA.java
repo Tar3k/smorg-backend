@@ -13,13 +13,7 @@ import javax.persistence.Id;
 import com.smorg.data.Goal;
 
 /**
- * Helper class to store all of the information from a message into a
- * JPA data store. The JPA data store requires a unique key and has
- * some annotations to describe the fields of the object to be stored.
- * Other then the key and annotations this is the same class as a
- * Note. A constructor is provided to initialize this instance with a
- * Note instance and a getNote method is provided to return a note
- * instance from the current instance 
+ * 
  */
 @Entity
 public class GoalJPA implements Serializable {
@@ -36,9 +30,7 @@ public class GoalJPA implements Serializable {
     private Date deadline;
 
     /**
-     * Initializes instance give an Note instance. This is a helper
-     * constructor that makes it easy to take a Note and store it with
-     * a key in the format required by JPA
+     * 
      */
     public GoalJPA(Goal goal) {
     	goalId = null;
@@ -49,6 +41,19 @@ public class GoalJPA implements Serializable {
     	setProgress(goal.getProgress());
     	setStartDate(goal.getStartDate());
     	setDeadline(goal.getDeadline());
+    }
+    
+    public Goal getGoal(){
+    	Goal goal = new Goal();
+    	goal.setGoalId(getGoalId());
+    	goal.setUserId(getUserId());
+    	goal.setEventIds(getEventIds());
+    	goal.setProgress(getProgress());
+    	goal.setDeadline(getDeadline());
+    	goal.setTitle(getTitle());
+    	goal.setDescription(getDescription());
+    	goal.setStartDate(getStartDate());
+    	return goal;
     }
 
 	public Long getGoalId() {

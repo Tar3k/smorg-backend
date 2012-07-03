@@ -5,12 +5,28 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
-		<servlet-name>AddGoalServlet</servlet-name>
+		<servlet-name>AddGoal</servlet-name>
 		<servlet-class>com.smorg.backend.AddGoalServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>AddGoalServlet</servlet-name>
-		<url-pattern>/AddGoal</url-pattern>
+		<servlet-name>AddGoal</servlet-name>
+		<url-pattern>/addgoal</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>GetGoals</servlet-name>
+	    <servlet-class>com.smorg.backend.GetGoalsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>GetGoals</servlet-name>
+	    <url-pattern>/getgoals</url-pattern>
+	</servlet-mapping>
+		<servlet>
+	    <servlet-name>RemoveGoal</servlet-name>
+	    <servlet-class>com.smorg.backend.RemoveGoalServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>RemoveGoal</servlet-name>
+	    <url-pattern>/removegoal</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

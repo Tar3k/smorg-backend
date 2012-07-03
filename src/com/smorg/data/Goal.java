@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Goal implements Serializable {
-    private Long goalId;
+    
+	private Long goalId;
     
     private String userId;
     private List<Long> eventIds;
@@ -15,6 +16,9 @@ public class Goal implements Serializable {
     private Date startDate;
     private Date deadline;
     
+    public Goal(){
+    	
+    }
     
 	public Long getGoalId() {
 		return goalId;
@@ -74,6 +78,8 @@ public class Goal implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "{Goal: id = " + getGoalId() + ", userid = " + getUserId() + "}";
+		return "{Goal: id = " + getGoalId()
+				+ ", userid = " + getUserId()
+				+ "}";
 	}
 }

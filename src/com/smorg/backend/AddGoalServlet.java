@@ -13,7 +13,6 @@ import com.smorg.data.GoalDAO;
 
 @SuppressWarnings("serial")
 public class AddGoalServlet extends HttpServlet {
-	private static final Logger log = Logger.getLogger(AddGoalServlet.class.getName());
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
@@ -23,7 +22,7 @@ public class AddGoalServlet extends HttpServlet {
 		// DAO instance
 		if (goal != null) {
 			GoalDAO dao = new GoalDAOJPA();
-			// saving note
+			// saving goal
 			System.out.println("Goal Info: " + goal.toString());
 			dao.addGoal(goal);
 			resp.setStatus(HttpServletResponse.SC_OK);
@@ -31,6 +30,7 @@ public class AddGoalServlet extends HttpServlet {
 		}else {
 			resp.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
 		}
+
 		
 	}
 	
@@ -42,10 +42,10 @@ public class AddGoalServlet extends HttpServlet {
     		Object object = objectInputStream.readObject();
     		result = (Goal) object;
     	} catch (ClassNotFoundException e) {
-    		System.out.println("ClassNotFound exception in deserializeGoal");
+    		System.out.println("ClassNotFound exception in deserialize Goal");
     		result = null;
     	} catch (Exception e) {
-    		System.out.println("Exception in deserializeGoal");
+    		System.out.println("Exception in deserialize Goal");
     		result = null;
     	}
     	return result;
