@@ -34,12 +34,17 @@ public class GoalDAOJPA implements GoalDAO {
 		ArrayList<Goal> goals = new ArrayList<Goal>();
 		try {
 			entityManager = EMF.get().createEntityManager();
-		    Query query = entityManager.createQuery(QueryStrings.getAll);
+		    Query query = entityManager.createQuery(QueryStrings.GET_ALL_USER_QUERY);
+		    System.out.println(QueryStrings.GET_ALL_USER_QUERY);
+		    System.out.println(query);
+		    query.setParameter("userId", userId);
 		    dbGoals = query.getResultList();
 		    if ((dbGoals != null) && (dbGoals.size() > 0)) {
 			for (GoalJPA goal : dbGoals) {
 				System.out.println("inside the enhanced for loop");
-			    goals.add(goal.getGoal());
+				System.out.println(QueryStrings.GET_ALL_USER_QUERY);
+			    System.out.println(query);
+				goals.add(goal.getGoal());
 			}
 		    }
 		} finally {
@@ -54,7 +59,7 @@ public class GoalDAOJPA implements GoalDAO {
 		EntityManager entityManager = null;
 		try {
 			entityManager = EMF.get().createEntityManager();
-		    Query query = entityManager.createQuery(QueryStrings.deleteQuery);
+		    Query query = entityManager.createQuery(QueryStrings.DELETE_QUERY);
 		    query.setParameter("goalId", goalId);
 		    int numberUpdated = query.executeUpdate();
 		} finally {

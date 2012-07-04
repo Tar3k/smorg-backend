@@ -42,10 +42,8 @@ public class GetGoalsServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	    throws IOException {
 	resp.setContentType("application/x-java-serialized-object");
-	String userId ="smorg.app@gmail.com";
+	String userId = deserializeUserId(req.getInputStream());
 	log.info(userId);
-	//System.out.println(userId);
-			//deserializeUserId(req.getInputStream());
 	ArrayList<Goal> goals = getAllGoals(userId);
 	System.out.println(goals);
 	log.info(goals.toString());
