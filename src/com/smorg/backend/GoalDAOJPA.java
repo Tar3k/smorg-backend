@@ -67,6 +67,45 @@ public class GoalDAOJPA implements GoalDAO {
 		}
 	    }
 
+	@Override
+	public void addEventToGoal(Long goalId, String eventId) {
+		
+		EntityManager entityManager = null;
+		GoalJPA goalJPA ;
+		try {
+			entityManager = EMF.get().createEntityManager();
+		    Query query = entityManager.createQuery(QueryStrings.GET_GOAL);
+		    query.setParameter("goalId", goalId);
+		    goalJPA = (GoalJPA) query.getSingleResult();
+		    goalJPA.addEvent(eventId);
+		    entityManager.refresh(goalJPA);
+		} finally {
+			entityManager.close();
+			
+		}
+		
+	}
+
+	@Override
+	public ArrayList<String> getGoalEvents(Long goalId) {
+		
+		EntityManager entityManager = null;
+		GoalJPA goalJPA;
+		log.info("get Goal events  method");
+		try {
+			entityManager = EMF.get().createEntityManager();
+		    Query query = entityManager.createQuery(QueryStrings.GET_GOAL);
+		    System.out.println(QueryStrings.GET_ALL_USER_QUERY);
+		    System.out.println(query);
+		    query.setParameter("goalId", goalId);
+		    goalJPA = (GoalJPA) query.getSingleResult();
+		    
+		} finally {
+			entityManager.close();
+		}
+		 return new ArrayList<String> (goalJPA.getEventIds());
+	}
+
 		
 	}
 

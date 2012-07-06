@@ -22,7 +22,7 @@ public class GoalJPA implements Serializable {
     private Long goalId;
     
     private String userId;
-    private List<Long> eventIds;
+    private List<String> eventIds;
     private String title;
     private String description;
     private Double progress;
@@ -41,6 +41,11 @@ public class GoalJPA implements Serializable {
     	setProgress(goal.getProgress());
     	setStartDate(goal.getStartDate());
     	setDeadline(goal.getDeadline());
+    }
+    
+    public void addEvent(String eventId){
+    	this.eventIds.add(eventId);
+    	
     }
     
     public Goal getGoal(){
@@ -72,11 +77,11 @@ public class GoalJPA implements Serializable {
 		this.userId = userId;
 	}
 
-	public List<Long> getEventIds() {
+	public List<String> getEventIds() {
 		return eventIds;
 	}
 
-	public void setEventIds(List<Long> eventIds) {
+	public void setEventIds(List<String> eventIds) {
 		this.eventIds = eventIds;
 	}
 
